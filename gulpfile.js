@@ -55,6 +55,7 @@ const paths = {
     partials: 'src/views/**/*.html',
   },
   dest: {
+    dist: 'dist',
     views: 'dist/views',
     css: 'dist/css',
     images: 'dist/images',
@@ -69,7 +70,7 @@ function includeIndexHtml() {
       prefix: '@@',
       basepath: './src'
     }))
-    .pipe(gulp.dest(paths.dest));
+    .pipe(gulp.dest(paths.dist));
 }
 
 function includeHtml() {
