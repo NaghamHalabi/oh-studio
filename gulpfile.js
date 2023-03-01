@@ -48,6 +48,7 @@ const fileInclude = require('gulp-file-include');
 const paths = {
   src: {
     html: 'src/views/*.html',
+    index: 'src/index.html',
     css: 'src/css/**/*.css',
     images: 'src/images/**/*.{jpg,jpeg,png,gif,webp}',
     scripts: 'src/js/**/*.js',
@@ -62,6 +63,15 @@ const paths = {
 };
 
 // Tasks
+function includeIndexHtml() {
+  return gulp.src(paths.src.index)
+    .pipe(fileInclude({
+      prefix: '@@',
+      basepath: './src'
+    }))
+    .pipe(gulp.dest(paths.dest));
+}
+
 function includeHtml() {
   return gulp.src(paths.src.html)
     .pipe(fileInclude({
@@ -94,5 +104,6 @@ function bundleScripts() {
 // Default task
 exports.default = gulp.series(
   gulp.parallel(bundleScripts, copyCss, copyImages, copyPartials),
+  includeIndexHtml,
   includeHtml
 );
