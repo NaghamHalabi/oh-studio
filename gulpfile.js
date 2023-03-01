@@ -68,7 +68,7 @@ function includeIndexHtml() {
   return gulp.src(paths.src.index)
     .pipe(fileInclude({
       prefix: '@@',
-      basepath: './src'
+      basepath: './src/views'
     }))
     .pipe(gulp.dest(paths.dest.dist));
 }
@@ -105,6 +105,6 @@ function bundleScripts() {
 // Default task
 exports.default = gulp.series(
   gulp.parallel(bundleScripts, copyCss, copyImages, copyPartials),
-  includeIndexHtml,
-  includeHtml
+  includeHtml,
+  includeIndexHtml
 );
