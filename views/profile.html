@@ -12,13 +12,29 @@
         <title>OH.STUDIO</title>
     </head>
     <body>
-            @@include('primary-navigation.html')
+            <div class="navigation-container">
+    <nav class="primary-navigation">
+        <ul role="list" aria-label="navigation" class="nav-list">
+            <li><a href="./home.html" aria-label="Home">Home</a></li>
+            <li><a href="./profile.html" aria-label="Profile">Profile</a></li>
+            <li><a href="./contact-us.html" aria-label="Contact">Contact</a></li>
+        </ul>
+    </nav>
+</div>
         <main>
             <section class="intro fade-up">  
                 <h1 class="fs-900 padding-650 fw-medium">Hey 👋🏼 I'm Oli </h1>  
             </section>
         </main>
-        @@include('footer.html')
+        <footer>
+    <small aria-label="copy-right" >&copy; Oli Harris 2023</small>
+    <button class="button">Shop</button>
+    <ul role="list" aria-label="social links" class="social-links">
+        <li><a href="#" aria-label="Twitter">Twitter</a></li>
+        <li><a href="#" aria-label="Linkedin">LinkedIn</a></li>
+        <li><a href="#" aria-label="Mail">Mail</a></li>
+    </ul>
+</footer>
     </body>
     <script src="../js/observers.js"></script>
     <script src="../js/activePage.js"></script>
