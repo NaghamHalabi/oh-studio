@@ -1,8 +1,8 @@
 export default {
-  entry: './dist/index.html',
+  entry: './dist/views/home.html',
     server: {
       base: '/oh-studio/',
-      index: './dist/index.html',
-      open: './dist/index.html'
+      index: './dist/views/home.html',
+      open: './dist/views/home.html',
     }
   }
