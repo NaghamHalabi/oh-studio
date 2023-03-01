@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A brand and product designer working with clients globally">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>OH.STUDIO</title>
+</head>
+<body>
+    <header>
+        @@include('./views/primary-navigation.html')
+    </header>
+    <main>
+        <section class="intro fade-up">
+            <h1 class="primary-heading | fs-primary-heading fw-medium">
+                <i>A brand and product designer working with clients globally</i>
+            </h1>
+        </section>
+        <section>
+            <ul role="list" aria-label="visual communication" class="visual-communication-list">
+                <li>Expertise</li>
+                <li>Branding</li>
+                <li>Product</li>
+                <li>Design Systems</li>
+            </ul>
+        </section>
+        <section class="clients">
+            <div class="client fade-up">
+                <img src="./images/studio02.webp" alt="aire">
+            </div>
+            <div class="client fade-up">
+                <img src="./images/studio02.webp" alt="">
+            </div>
+            <div class="client fade-up">
+                <img src="./images/studio01.webp" alt="aire">
+            </div>
+            <div class="client fade-up">
+                <img src="./images/studio02.webp" alt="">
+            </div>
+        </section>
+        <section class="cta fade-up | fw-medium">
+            <div class="container">
+                <p>Let's work together.</p>
+                <a class=" mail-to | text-accent-500" href="mailto:oli@oh.studio" target="_blank">Get in touch.</a>
+            </div>
+        </section>
+    </main>
+   @@include('./views/footer.html')
+</body>
+<script src="./js/observers.js"></script>
+<script src="./js/activePage.js"></script>
+</html>
