@@ -70,7 +70,7 @@ function includeIndexHtml() {
       prefix: '@@',
       basepath: './src'
     }))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.dest.dist));
 }
 
 function includeHtml() {
