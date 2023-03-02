@@ -1,27 +1,2 @@
-name: Deploy to GitHub Pages
-on:
-  push:
-    branches:
-      - main
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Log in to GitHub Packages
-        run: npm login --registry=https://npm.pkg.github.com
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: Install dependencies
-        run: npm ci
-      - name: Build application
-        run: npm run dev
-      - name: Remove cached configuration
-        run: rm -rf node_modules/.cache/vite
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GHPAGES }}
-          publish_dir: ./dist
-          publish_branch: github--online--pages
+- name: Clear Vite cache
+  run: npx vite clear
