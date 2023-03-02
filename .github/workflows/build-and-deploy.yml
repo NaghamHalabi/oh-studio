@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: npm install
+        # run: npm install
       - name: Clear Vite cache
         run: npx vite clear
       - name: Build and Deploy
