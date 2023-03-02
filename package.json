@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "concurrently \"vite\" \"gulp\"",
+    "dev": "concurrently \"vite --clearScreen\" \"gulp\"",
     "build": "concurrently \"vite\" \"gulp\"",
     "preview": "vite preview"
   },
