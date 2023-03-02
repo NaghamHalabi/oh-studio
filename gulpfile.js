@@ -106,5 +106,5 @@ function bundleScripts() {
 exports.default = gulp.series(
   gulp.parallel(bundleScripts, copyCss, copyImages, copyPartials),
   includeHtml,
-  includeIndexHtml
+  //includeIndexHtml
 );
