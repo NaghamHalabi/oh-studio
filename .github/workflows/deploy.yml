@@ -1,2 +1,14 @@
-- name: Clear Vite cache
-  run: npx vite clear
+name: Clear Vite cache
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  clear-cache:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clear Vite cache
+        run: npx vite clear
