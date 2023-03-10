@@ -1,23 +1,26 @@
 /* defining custom properties */
 :root {
+	/* defining custom colors */
 	--clr-accent-100: #e8e5e480;
 	--clr-accent-500: #7f7f7f;
 
 	--clr-neutral-100: #ffffff;
 	--clr-neutral-900: #000000;
 
+	/* defining custom fonts */
 	--ff-primary: 'Noto Sans', serif;
 	 
 	/* adding layers of abstraction */
 	--ff-body: var(--ff-primary);
 	--ff-heading: var(--ff-primary);
 
+	/* defining font weights*/
 	--fw-regular: 400;
 	--fw-medium: 500;
 	--fw-semi-bold: 600;
 	--fw-bold: 700;
 
-
+	/* defining font sizes*/
 	--fs-400: 0.875rem; /* 14 p  x */
 	--fs-500: 1.375rem; /* 22 px */ 
 	--fs-600: 1.875rem; /* 30 px */ 
@@ -49,8 +52,6 @@
 	--size-800: 4rem;
 	--size-900: 5rem;
 }
-/* at 810px it changes */
-/* at 1200px it changes */
 
 /* use min-width: 50em so that we are sort of planning as mobile first*/
 
@@ -229,6 +230,12 @@ body {
 }
 
 /* button */
+.button-container {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 20px;
+}
 
 .button {
 	display: inline-flex; /* good practice for buttons that might contain icons */
@@ -238,6 +245,8 @@ body {
 	background-color: var(--clr-neutral-900);
 	color: var(--clr-neutral-100);
 	border-radius: 100vh;
+	padding: 3px;
+
 }
 
 /* .button:hover, button:focus-visible {
@@ -247,12 +256,13 @@ body {
 /* navigation */
 
 .navigation-container {
-	position: sticky;
+	position: fixed;
     width: 100%;
 	padding: var(--size-400);
     display: flex;
     justify-content: center;
     height: max-content;
+	z-index: 1000;
 }
 
 .primary-navigation {
@@ -264,7 +274,6 @@ body {
 	height: min-content;
 	backdrop-filter: blur(16px);
 	place-items: center;
-	z-index: 1000;
 }
 
 .nav-list {
@@ -294,6 +303,10 @@ body {
 	display: flex;
 }
 
+main {
+	padding-top: 22%; 
+}
+  
 /* intro */
 
 .intro {
@@ -310,22 +323,7 @@ body {
 }
 
 .visual-communication-list {
-	display: flex;
-	flex-direction: row;
-	gap: 1em;
-	position: relative;
-	text-align: center;
-	max-width: 850px;
-	margin: auto;
-	justify-content: center;
-	height: min-content;
-}
-
-.visual-communication-list li {
-	border-radius: 100vh;
-	background-color: var(--clr-accent-100);
-	padding: 8px 12px;
-
+	display: none;
 }
 
 .clients {
@@ -337,16 +335,55 @@ body {
 }
 
 .client {
+	position: relative;
 	display: flex;
-	background-color: red;
-
 	border-radius: 15px;
-	border-radius:2px solid red;
 	overflow: hidden;
-	margin-bottom: 3%;
 }
 
+
+.client-image img, .client-image video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.client-icon {
+	display: none;
+}
+
+.client-title {
+	display: none;
+}
+
+.client-name {
+	display: block;
+	padding: var(--size-100);
+	font-size: var(--fs-500);
+}
+
+
+@keyframes animate-client-icon {
+	0% {
+		opacity: 0.4;
+		transform: translate(-20px, 20px) rotate(45deg);
+	}
+	50% {
+		opacity: 0.8;
+		transform: translate(-15px, 15px) rotate(45deg);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(-10px, 10px) rotate(45deg);
+	}
+}
+
+
 @media(min-width:50rem) {
+	main {
+		padding-top: 11%; 
+	}
+
 	.navigation-container {
 		padding: 30px 40px;
 	}
@@ -357,14 +394,92 @@ body {
 	.clients {
 		flex-direction: row;
 		padding: var(--size-650);
+
 	}
 	.client {
 		width: 48.5%;
 		height: 48.5%;
+		margin-bottom: 3%;
 	}
+
+	.client-title {
+		display: inline-block;
+		visibility: hidden;
+
+		font-size: var(--fs-500);
+		transform: visibility 0s;
+	}
+
+	.client-name {
+		display: none;
+	}
+
+	.client-details {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		padding: var(--size-400);
+		display: flex;
+		color: var(--clr-neutral-100);
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.client:hover .client-details .client-title {
+		visibility: visible;
+	}
+
+	.client:hover .client-image {
+		filter: blur(8px);
+	}
+
+	.client:hover .client-details {
+		opacity: 0.7;
+		background-color: rgba(0 ,0 ,0 , 0.5);
+		transition: background-color 0.5s ease-in;
+	}
+	.client-icon i {
+		color: var(--clr-neutral-100);
+	}
+	.client-icon {
+		display: inline-block;
+		position: absolute;
+		top: 40px;
+		right: 48px;
+		font-size: 40px;
+		transition: transform 0.5s ease;
+		transform: translate(20px, -20px) rotate(45deg);
+		opacity: 0;
+	}
+
+	.client:hover .client-details .client-icon {
+		opacity: 1;
+		animation: animate-card-icon 0.2s linear;
+	}
+
 	.cta {
 		padding: var(--size-650);
 	}
+
+	.visual-communication-list {
+		display: flex;
+		flex-direction: row;
+		gap: 1em;
+		position: relative;
+		text-align: center;
+		max-width: 850px;
+		margin: auto;
+		justify-content: center;
+		height: min-content;
+	}
+	
+	.visual-communication-list li {
+		border-radius: 100vh;
+		background-color: var(--clr-accent-100);
+		padding: 8px 12px;
+	
+	}
+	
 }
 
 .fade-up {
@@ -418,8 +533,116 @@ body {
 
 /* footer */
 
-footer {
-    display: flex;
-    padding: var(--size-400);
-    justify-content: space-between;
+.footer {
+	display: flex;
+    flex-direction: column;
+    padding-bottom: var(--size-800);
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 50rem) {
+	.footer {
+		display: flex;
+		flex-direction: row;
+		padding: var(--size-400);
+		justify-content: space-between;
+	}
+}
+
+.card {
+	display: flex;
+	position: relative;
+	width: 48.5%;
+	height: 48.5%;
+	overflow: hidden;
+	border-radius: 15px;
+}
+
+.card-image img, .card-image video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.card:hover .card-image img {
+	filter: blur(16px);
+	opacity: 1.2;
+}
+
+.card-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+  
+  }
+
+.card:hover .card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0 ,0 ,0 , 0.5);
+  transition: background-color 0.5s ease;
+}
+
+.card:hover .card-content .card-title {
+	visibility: visible;
+}
+
+.card-content .card-title {
+	color: white;
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0;
+	visibility: hidden;
+	transition: visibility 0s;
+}
+
+.card-content .card-icon {
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform:translate(20px, -20px) rotate(45deg);
+	visibility: hidden;
+	transition: visibility 0s;
+}
+
+
+.card:hover .card-content .card-icon {
+	visibility: visible;
+	animation: animate-card-icon 0.5s linear;
+}
+
+
+
+.card-content .card-icon i {
+	color: white;
+	font-size: 40px;
+	transition: transform 0.5s ease;
+}
+
+
+@keyframes animate-card-icon {
+	0% {
+		opacity: 0.4;
+		transform: rotate(45deg);
+    }
+
+    55% {
+		opacity: 0.5;
+		transform: translate(10px, -10px) rotate(45deg);
+    }
+
+    100% {
+		opacity: 1;
+		transform: translate(20px, -20px) rotate(45deg);
+    }
 }
