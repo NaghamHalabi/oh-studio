@@ -50,7 +50,7 @@ const paths = {
     html: 'src/views/*.html',
     index: 'src/index.html',
     css: 'src/css/**/*.css',
-    images: 'src/images/**/*.{jpg,jpeg,png,gif,webp}',
+    images: 'src/images/**/*.{jpg,jpeg,png,gif,webp,mp4}',
     scripts: 'src/js/**/*.js',
     partials: 'src/views/**/*.html',
   },
